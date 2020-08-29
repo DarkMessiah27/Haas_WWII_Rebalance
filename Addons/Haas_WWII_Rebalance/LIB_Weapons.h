@@ -341,11 +341,6 @@
         };
         class Single : Mode_SemiAuto {
             dispersion = MOA_TO_RAD(4);
-            class BaseSoundModeType {
-                closure1[] = {"\CSA38II_sounds\w_m1895\reload2.ogg", 3, 1, 20};
-                soundClosure[] = {"closure1", 1};
-                weaponSoundEffect = "CSA38_Rifle";
-            };
         };
     };
 

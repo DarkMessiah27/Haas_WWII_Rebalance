@@ -4,6 +4,9 @@ class RifleCore;
 class MGunCore;
 class CannonCore;
 class RocketPods;
+class LIB_MP44;
+class LIB_K98;
+class LIB_MP40;
 
 class MGun : MGunCore {
     class WeaponSlotsInfo;
@@ -35,24 +38,6 @@ class HMG_M2_Mounted : HMG_M2 {
 class GrenadeLauncher;
 
 class UGL_F : GrenadeLauncher {
-    dispersion = MOA_TO_RAD(50);
-    recoil = "recoil_single_m320";
-    recoilProne = "recoil_single_m320";
-    aiDispersionCoefX = 5;
-    aiDispersionCoefY = 10;
-    aiRateOfFire = 5;
-    aiRateOfFireDispersion = 5;
-    aiRateOfFireDistance = 200;
-    class Single : Mode_SemiAuto {
-        dispersion = MOA_TO_RAD(50);
-        recoil = "recoil_single_m320";
-        recoilProne = "recoil_single_m320";
-        aiDispersionCoefX = 5;
-        aiDispersionCoefY = 10;
-        aiRateOfFire = 5;
-        aiRateOfFireDispersion = 5;
-        aiRateOfFireDistance = 200;
-    };
 };
 
 class Launcher;
@@ -96,68 +81,65 @@ class hgun_Rook40_F : Pistol_Base_F {
     class Single;
 };
 
-class sgun_HunterShotgun_01_base_F : Rifle_Long_Base_F {
-    displayName = "Browning Superposed";
-    descriptionShort = "The Browning Superposed was the first over-under shotgun design.";
-    discreteDistance[] = {50};
-    discreteDistanceInitIndex = 0;
-    magazineWell[] += {"CBA_12g_2rnds","CBA_12g_1rnd"};
+class jsrs_rifle_base : Rifle_Base_F
+{
+    bullet1[] = {"\jsrs_soundmod_complete\JSRS_Soundmod_Soundfiles\weapons\shells\medium\metal_1.ogg",2.0099,1,10};
+    bullet2[] = {"\jsrs_soundmod_complete\JSRS_Soundmod_Soundfiles\weapons\shells\medium\metal_2.ogg",2.0099,1,10};
+    bullet3[] = {"\jsrs_soundmod_complete\JSRS_Soundmod_Soundfiles\weapons\shells\medium\metal_3.ogg",2.0099,1,10};
+    bullet4[] = {"\jsrs_soundmod_complete\JSRS_Soundmod_Soundfiles\weapons\shells\medium\metal_4.ogg",2.0099,1,10};
+    bullet5[] = {"\jsrs_soundmod_complete\JSRS_Soundmod_Soundfiles\weapons\shells\medium\dirt_1.ogg",2.0099,1,10};
+    bullet6[] = {"\jsrs_soundmod_complete\JSRS_Soundmod_Soundfiles\weapons\shells\medium\dirt_2.ogg",2.0099,1,10};
+    bullet7[] = {"\jsrs_soundmod_complete\JSRS_Soundmod_Soundfiles\weapons\shells\medium\dirt_3.ogg",2.0099,1,10};
+    bullet8[] = {"\jsrs_soundmod_complete\JSRS_Soundmod_Soundfiles\weapons\shells\medium\dirt_4.ogg",2.0099,1,10};
+    bullet9[] = {"\jsrs_soundmod_complete\JSRS_Soundmod_Soundfiles\weapons\shells\medium\grass_1.ogg",2.0099,1,10};
+    bullet10[] = {"\jsrs_soundmod_complete\JSRS_Soundmod_Soundfiles\weapons\shells\medium\grass_2.ogg",2.0099,1,10};
+    bullet11[] = {"\jsrs_soundmod_complete\JSRS_Soundmod_Soundfiles\weapons\shells\medium\grass_3.ogg",2.0099,1,10};
+    bullet12[] = {"\jsrs_soundmod_complete\JSRS_Soundmod_Soundfiles\weapons\shells\medium\grass_4.ogg",2.0099,1,10};
+    soundbullet[] = {"bullet1",0.08,"bullet2",0.084,"bullet3",0.084,"bullet4",0.084,"bullet5",0.093,"bullet6",0.093,"bullet7",0.074,"bullet8",0.074,"bullet9",0.084,"bullet10",0.085,"bullet11",0.083,"bullet12",0.083};
 };
 
-class sgun_HunterShotgun_01_sawedoff_base_F : sgun_HunterShotgun_01_base_F {
-    displayName = "Browning Superposed (Sawn Off)";
-    descriptionShort = "The Browning Superposed was the first over-under shotgun design. Someone has cut down the barrel and stock on this one.";
-    discreteDistance[] = {25};
-    discreteDistanceInitIndex = 0;
-    class MagazineCoef {
-        initSpeed = 0.75;
+class jsrs_k98_base : Rifle_Base_F
+{
+    class Single : Mode_SemiAuto {
+        sounds[] = {"StandardSound"};
+        class StandardSound : BaseSoundModeType {
+            soundSetShot[] = {"jsrs_kar98k_shot_soundset","jsrs_ww2_bolt_rifle_reverb_soundset"};
+        };
+    };
+};
+
+class jsrs_smle_base : Rifle_Base_F
+{
+    class Single: Mode_SemiAuto
+    {
+        sounds[] = {"StandardSound"};
+        class StandardSound: BaseSoundModeType
+        {
+            soundSetShot[] = {"jsrs_leeenfield_shot_soundset","jsrs_ww2_bolt_rifle_reverb_soundset"};
+        };
+    };
+};
+
+class jsrs_mp40_base : jsrs_rifle_base
+{
+    class FullAuto : Mode_FullAuto 
+    {
+        sounds[] = {"StandardSound"};
+        class StandardSound: BaseSoundModeType
+        {
+            soundSetShot[] = {"jsrs_mp40_shot_soundset","jsrs_ww2_smg_reverb_soundset"};
+        };
     };
 };
 
 class ItemCore;
-class InventoryItem_Base_F;
-class UniformItem;
-class VestItem;
 
 class muzzle_snds_H : ItemCore {
     class ItemInfo;
 };
 
-class Uniform_Base : ItemCore {
-    class ItemInfo;
-};
-
-class U_BasicBody : Uniform_Base {
-    class ItemInfo;
-};
-
-class Vest_Camo_Base : ItemCore {
-    class ItemInfo;
-};
-
-class CBA_MiscItem_ItemInfo;
-class ACE_ItemCore;
-
-#include "ACE_Weapons.h"
-
-#include "FOW_Weapons.h"
-
-#include "LIB_Weapons.h"
-
 #include "LEN_Weapons.h"
 
 #include "CSA38_Weapons.h"
 
-#include "Sep39_Weapons.h"
-
-#include "CSA38_Uniforms.h"
-
-#include "FOW_Uniforms.h"
-
-#include "FOW_Vests.h"
-
-#include "LIB_Vests.h"
-
-#include "CSA38_Vests.h"
-
-#include "Sep39_Vests.h"
+//#include "Sep39_Weapons.h"

@@ -772,7 +772,6 @@
         class FullAuto : Mode_FullAuto {
             dispersion = MOA_TO_RAD(3);
             reloadTime = RPM_TO_TIME(510); // 510 rpm
-            class BaseSoundModeType;
         };
         class Single : FullAuto {
             autoFire = 0;
@@ -846,7 +845,6 @@
         class FullAuto : Mode_FullAuto {
             dispersion = MOA_TO_RAD(4);
             reloadTime = RPM_TO_TIME(430); // 430 rpm
-            class BaseSoundModeType;
         };
     };
 
@@ -1014,9 +1012,6 @@
     class fow_w_pzfaust_base : Launcher_Base_F {
         picture = "\WW2\Assets_t\Weapons\Equipment_t\Weapons\Launchers\Gear_PzFaust_30m_X_ca.paa";
         class WeaponSlotsInfo;
-        class Single : Mode_SemiAuto {
-            class BaseSoundModeType;
-        };
     };
 
     class fow_w_pzfaust_30_klein : fow_w_pzfaust_base {
